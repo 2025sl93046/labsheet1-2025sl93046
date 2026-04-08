@@ -11,3 +11,10 @@ def test_mul():
 
 def test_div():
     assert calculator.div(6, 3) == 2
+
+test_add()
+test_sub()
+test_mul()
+test_div()
+
+print("All tests passed!")
