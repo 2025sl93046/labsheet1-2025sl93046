@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/2025sl93046/labsheet1-2025sl93046.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh '''
+                echo "===== Build Stage ====="
+                echo "Listing repository contents:"
+                ls -la
+
+                echo "Python version:"
+                python3 --version
+                '''
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh '''
+                echo "===== Test Stage ====="
+                python3 test_calculator.py
+                '''
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh '''
+                echo "===== Deploy Stage ====="
+                echo "Deployment placeholder (will update in Task 4)"
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Pipeline executed successfully!"
+        }
+        failure {
+            echo "Pipeline failed! Check logs."
+        }
+    }
+}
